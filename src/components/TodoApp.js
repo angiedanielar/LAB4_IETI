@@ -1,36 +1,31 @@
 import React from 'react';
 import ResponsiveDrawer from './ResponsiveDrawer';
-import CardList from './CardList';
-import moment from 'moment';
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+
 
 export const TodoApp = () => {
-
-    const lista = [{
-        "description": "some description text ",
-        "responsible": {
-            "name": "Santiago Carrillo",
-            "email": "sancarbar@gmail"
-        },
-        "status": "ready",
-        "dueDate": moment()
-    },{
-        "description": "other description text ",
-        "responsible": {
-            "name": "Daniela Ruiz",
-            "email": "daniela@gmail"
-        },
-        "status": "ready",
-        "dueDate": moment()
-    }]
 
     return (
         <div>
             <ResponsiveDrawer></ResponsiveDrawer>
-            <CardList lista={lista}></CardList>
+            <Button
+                variant="contained"
+                color="primary"
+                className="submit">
+                <Link style={{color:"white"}} to="/myTasks" > Ver mis tareas</Link>
+            </Button> 
+            <br></br>  
+            <br></br>
+            <Button
+                variant="contained"
+                color="primary"
+                className="submit">
+                <Link style={{color:"white"}} to="/newTask" >Añadir una nueva tarea</Link>
+            </Button>     
         </div>
     )
 }
-
 export default TodoApp;
 
 

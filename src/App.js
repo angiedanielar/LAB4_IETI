@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, HashRouter, Switch } from 'react-router-dom'
 import { Login } from './components/Login';
 import TodoApp from './components/TodoApp';
 import Swal from 'sweetalert2';
+import { Card } from './components/Card';
+import CardList from './components/CardList';
+import { EditProfile } from './components/EditProfile';
 
 const App = () => {
 
@@ -51,15 +54,23 @@ const App = () => {
     <TodoApp />
   );
 
+  const isLive= isLoggedIn?TodoAppView:LoginView
+
   return (
-    <Router>
+
       <div className="App">
-        <div>
-          {!isLoggedIn && (<Route path="/" component={LoginView} />)}
-          {isLoggedIn && (<Route path="/" component={TodoAppView} />)}
-        </div>
+        <HashRouter  basename="/">
+                <div>
+                <Switch>
+                  <Route exact path="/" component={isLive} ></Route>   
+                  <Route path="/newTask" component={Card} ></Route> 
+                  <Route path="/myTasks" component={CardList} ></Route>      
+                  <Route path="/editProfile" component={EditProfile} ></Route>  
+                </Switch> 
+                </div>
+            </HashRouter>
       </div>
-    </Router>
+
   );
 }
 

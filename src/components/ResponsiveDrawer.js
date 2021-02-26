@@ -15,7 +15,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import EditOutlined from "@material-ui/icons/EditOutlined";
+import { Link } from 'react-router-dom';
 
 const signOut = (e) => {
   localStorage.removeItem('isLoggedIn');
@@ -74,10 +75,10 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['Tasks'].map((text) => (
+        {[''].map((text) => (
           <ListItem button key={text}>
-            <ListItemIcon> <AssignmentTurnedInIcon /></ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemIcon> <EditOutlined /></ListItemIcon>
+            <Link to="/editProfile">Edit Profile</Link>
           </ListItem>
           
         ))}
