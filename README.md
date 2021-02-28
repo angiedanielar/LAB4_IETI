@@ -1,6 +1,6 @@
 # Task Planner 
 
-[Go to the app](https://ietilabcuatro.herokuapp.com/)
+No tengo espacio para más aplicaciones en Heroku. El despliegue lo hice con Firebase y se puede ver en el lab 5. 
 
 _User: daniela@gmail.com_
 
