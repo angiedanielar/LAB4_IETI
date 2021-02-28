@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, HashRouter, Switch } from 'react-router-dom'
 import { Login } from './components/Login';
@@ -7,8 +7,24 @@ import Swal from 'sweetalert2';
 import { Card } from './components/Card';
 import CardList from './components/CardList';
 import { EditProfile } from './components/EditProfile';
+import axios from "axios";
 
 const App = () => {
+
+  const [us, setus] = useState(null);
+
+  useEffect(() => {
+    axios.get("https://ieti-d8d81-default-rtdb.firebaseio.com/user.json")
+                .then(response => {
+                  let result = response.data;
+                let us = Object.keys(result)
+                    .map(key => result[key]);
+                setus(us);
+                console.log(us)              
+                }).catch(error => {
+                    alert("An error occurred while trying to connect to the database.");
+                });
+  }, [])
 
   //Save data
   localStorage.setItem('user', "daniela@gmail.com");
@@ -51,25 +67,31 @@ const App = () => {
   );
 
   const TodoAppView = () => (
+
     <TodoApp />
   );
 
-  const isLive= isLoggedIn?TodoAppView:LoginView
+  const EditProfileView = () => (
+
+    <EditProfile update={us} />
+  );
+
+  const isLive = isLoggedIn ? TodoAppView : LoginView
 
   return (
 
-      <div className="App">
-        <HashRouter  basename="/">
-                <div>
-                <Switch>
-                  <Route exact path="/" component={isLive} ></Route>   
-                  <Route path="/newTask" component={Card} ></Route> 
-                  <Route path="/myTasks" component={CardList} ></Route>      
-                  <Route path="/editProfile" component={EditProfile} ></Route>  
-                </Switch> 
-                </div>
-            </HashRouter>
-      </div>
+    <div className="App">
+      <HashRouter basename="/">
+        <div>
+          <Switch>
+            <Route exact path="/" component={isLive} ></Route>
+            <Route path="/newTask" component={Card} ></Route>
+            <Route path="/myTasks" component={CardList} ></Route>
+            <Route path="/editProfile" component={EditProfileView} ></Route>
+          </Switch>
+        </div>
+      </HashRouter>
+    </div>
 
   );
 }

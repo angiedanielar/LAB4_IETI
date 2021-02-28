@@ -28,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
 export const Filter = (props) => {
     const classes = useStyles();
 
-    const[status,setStatus] = useState("Ready");
-    const[responsible,setResponsible] = useState("");
+    const [status, setStatus] = useState("Ready");
+    const [responsible, setResponsible] = useState("");
 
     const handleStatusChange = (e) => {
         setStatus(e.target.value);
@@ -47,8 +47,8 @@ export const Filter = (props) => {
     const handleFilters = (e) => {
         e.preventDefault();
         const filters = {
-            status:status,
-            responsible:responsible
+            status: status,
+            responsible: responsible
         };
         props.filter(filters);
         props.closeAction();
@@ -56,61 +56,61 @@ export const Filter = (props) => {
 
     return (
         <div>
-        <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            className={classes.modal}
-            open={props.open}
-            onClose={props.closeAction}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-                timeout: 500,
-            }}
-        >
-        <Fade in={props.open}>
-            <div className={classes.paper}>
-            <ResponsiveDrawer></ResponsiveDrawer>
-            <form className="todo-form">
-                <Typography variant="h2">New Task</Typography>
-                <FormControl margin="normal" required>
-                    <InputLabel htmlFor="number">Responsible:</InputLabel>
-                    <Input id="responsible" value={responsible} name="responsible" autoFocus onChange={handleResponsibleChange} />
-                </FormControl>
-                <br></br>
-                <br></br>
-                <FormControl margin="normal" required>
-                    <InputLabel htmlFor="age-native-simple">Status:</InputLabel>
-                    <Select
-                        native
-                        value={status}
-                        onChange={handleStatusChange}>
-                        <option value="Ready">Ready</option>
-                        <option value="In progress">In progress</option>
-                        <option value="Done">Done</option>
-                    </Select>
-                </FormControl>         
-            </form>
-                <br></br>
-                <br></br>
-                <br></br>
-                <Button
-                    onClick={handleCleanFilters}
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                >Clear All</Button>
-                <br></br>
-                <br></br>
-                <Button
-                    onClick={handleFilters}
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                >Filter</Button>
-            </div>
-        </Fade>
-      </Modal>
-    </div>
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={props.open}
+                onClose={props.closeAction}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={props.open}>
+                    <div className={classes.paper}>
+                        <ResponsiveDrawer></ResponsiveDrawer>
+                        <form className="todo-form">
+                            <Typography variant="h2">New Task</Typography>
+                            <FormControl margin="normal" required>
+                                <InputLabel htmlFor="number">Responsible:</InputLabel>
+                                <Input id="responsible" value={responsible} name="responsible" autoFocus onChange={handleResponsibleChange} />
+                            </FormControl>
+                            <br></br>
+                            <br></br>
+                            <FormControl margin="normal" required>
+                                <InputLabel htmlFor="age-native-simple">Status:</InputLabel>
+                                <Select
+                                    native
+                                    value={status}
+                                    onChange={handleStatusChange}>
+                                    <option value="Ready">Ready</option>
+                                    <option value="In progress">In progress</option>
+                                    <option value="Done">Done</option>
+                                </Select>
+                            </FormControl>
+                        </form>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <Button
+                            onClick={handleCleanFilters}
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                        >Clear All</Button>
+                        <br></br>
+                        <br></br>
+                        <Button
+                            onClick={handleFilters}
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                        >Filter</Button>
+                    </div>
+                </Fade>
+            </Modal>
+        </div>
     )
 }

@@ -80,14 +80,14 @@ function ResponsiveDrawer(props) {
             <ListItemIcon> <EditOutlined /></ListItemIcon>
             <Link to="/editProfile">Edit Profile</Link>
           </ListItem>
-          
+
         ))}
         {['LogOut'].map((text) => (
           <ListItem button key={text} onClick={signOut}>
             <ListItemIcon> <ExitToAppIcon /></ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
-        ))} 
+        ))}
       </List>
     </div>
   );

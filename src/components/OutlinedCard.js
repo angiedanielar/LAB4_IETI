@@ -40,7 +40,7 @@ export default function OutlinedCard({description,responsible,status,dueDate}) {
         {status}
         </Typography>
         <Typography variant="body2" component="p">
-        {dueDate.format('DD-MM-YYYY')}
+        {new Date(dueDate).toLocaleString()}
         </Typography>
       </CardContent>
       <CardActions>
