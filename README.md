@@ -1,6 +1,6 @@
 # Task Planner 
 
-No tengo espacio para más aplicaciones en Heroku. El despliegue lo hice con Firebase y se puede ver en el lab 5. 
+No tengo espacio para más aplicaciones en Heroku, entonces el despliegue lo hice con Firebase y se puede ver [aquí](https://github.com/angiedanielar/LAB5_IETI).
 
 _User: daniela@gmail.com_
 
